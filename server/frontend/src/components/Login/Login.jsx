@@ -59,11 +59,11 @@ const Login = ({ onClose }) => {
               <span className="input_field">Password </span>
               <input name="psw" type="password"  placeholder="Password" className="input_field" onChange={(e) => setPassword(e.target.value)}/>            
               </div>
-              <div>
-              <input className="action_button" type="submit" value="Login"/>
-              <input className="action_button" type="button" value="Cancel" onClick={()=>setOpen(false)}/>
+              <div className="button_group">
+              <input className="action_button primary_button" type="submit" value="Login"/>
+              <a className="action_button register_button" href="/register">Register</a>
+              <input className="action_button cancel_button" type="button" value="Cancel" onClick={()=>setOpen(false)}/>
               </div>
-              <a className="loginlink" href="/register">Register Now</a>
           </form>
       </div>
     </div>

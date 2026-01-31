@@ -1,28 +1,169 @@
-.navcontainer{
-  display: flex;
-  flex: 1;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-  flex-direction: row;
-  margin: auto;
-  margin-top: 2%;
-  background-color: rgb(97, 64, 128);
-  align-items: flex-start;
+* {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
 }
 
-.navitems{
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  min-height: 100vh;
+}
+
+.modalContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 40px 20px;
+}
+
+.login_panel {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login_panel > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.input_field {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  height: 50px;
+  padding: 0 18px;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background: #f8f9fa;
+  color: #1a1a2e;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #7c3aed;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: #999;
+}
+
+.button_group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action_button {
+  width: 100%;
+  height: 45px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary_button {
+  background: linear-gradient(135deg, #7c3aed 0%, #00d4ff 100%);
+  color: white;
+}
+
+.primary_button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+}
+
+.register_button {
+  background: transparent;
+  border: 2px solid #7c3aed;
+  color: #7c3aed;
+}
+
+.register_button:hover {
+  background: #7c3aed;
+  color: white;
+}
+
+.cancel_button {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.cancel_button:hover {
+  background: #e0e0e0;
+}
+
+/* Global navbar fix for React */
+.navbar {
+  min-height: 60px !important;
+  max-height: 70px !important;
+  padding: 0.5rem 1.5rem !important;
+}
+
+/* Navigation styles */
+.navcontainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.navitems {
   display: flex;
   flex-direction: row;
-  padding: 20px;
+  padding: 10px 20px;
   flex: 1;
   justify-content: flex-start;
-  justify-self: center;
+  align-items: center;
+  gap: 20px;
 }
 
-.nav_item{
-  margin-left:15px;
-  font-size: 20px;
-  color: azure;
-  align-self: center;
+.nav_item {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav_item:hover {
+  color: #00d4ff;
+  background: rgba(0, 212, 255, 0.1);
 }
 
 .input_panel {
@@ -31,56 +172,38 @@
   padding: 20px;
   flex: 1;
   justify-content: flex-end;
-  justify-self: center;
-}
-
-.input_field{
-  height:40px;
-  width:200px; 
-  font-size: medium;
-  margin:.5cm;
-}
-
-
-.action_button{
-  cursor: pointer;
-  font-size: large;
-  color: rgb(97, 64, 128);
-  border-radius: 10px;
-  height:40px;
-  padding-left:.5cm;
-  padding-right: .5cm;
-  margin: .5cm;
-}
-
-.submit:hover {
-  background-color: wheat;
-}
-
-.small_header{
-  font: 30px sans-serif;
-  color:azure;
-  margin: .5cm;
-}
-
-.username{
-  font: 30px sans-serif;
-  color:azure;
-  margin: .5cm;
-  justify-content: 'flex-end';
-  align-self:flex-end;
-}
-
-.login_panel {
-  display: flex;
-  flex-direction: column;
-  margin:auto;
-  margin: 0 auto;
-  width: 50%; 
-  padding: 20px;
-  flex: 1;
-  justify-content:center;
   align-items: center;
-  vertical-align: middle;
-  
+}
+
+.small_header {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #00d4ff;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.username {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin-left: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .login_panel {
+    padding: 40px 25px;
+    margin: 20px;
+  }
+
+  .navcontainer {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .navitems {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

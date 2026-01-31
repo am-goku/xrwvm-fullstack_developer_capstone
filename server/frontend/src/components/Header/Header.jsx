@@ -38,26 +38,54 @@ if ( curr_user !== null &&  curr_user !== "") {
 }
     return (
         <div>
-          <nav class="navbar navbar-expand-lg navbar-light" style={{backgroundColor:"darkturquoise",height:"1in"}}>
-            <div class="container-fluid">
-              <h2 style={{paddingRight: "5%"}}>Dealerships</h2>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+          <nav className="navbar navbar-expand-lg" style={{
+            background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+            padding: '1rem 2rem',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)'
+          }}>
+            <div className="container-fluid">
+              <h2 style={{
+                color: '#00d4ff',
+                fontWeight: 700,
+                margin: 0,
+                fontSize: '1.8rem',
+                letterSpacing: '-0.5px'
+              }}>Best Cars</h2>
+              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" style={{fontSize: "larger"}} aria-current="page" href="/">Home</a>
+              <div className="collapse navbar-collapse" id="navbarText">
+                <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li className="nav-item">
+                    <a className="nav-link" style={{
+                      color: 'rgba(255, 255, 255, 0.85)',
+                      fontWeight: 500,
+                      padding: '0.5rem 1.2rem',
+                      borderRadius: '8px',
+                      transition: 'all 0.3s ease'
+                    }} href="/">Home</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" style={{fontSize: "larger"}} href="/about">About Us</a>
+                  <li className="nav-item">
+                    <a className="nav-link" style={{
+                      color: 'rgba(255, 255, 255, 0.85)',
+                      fontWeight: 500,
+                      padding: '0.5rem 1.2rem',
+                      borderRadius: '8px',
+                      transition: 'all 0.3s ease'
+                    }} href="/about">About Us</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" style={{fontSize: "larger"}} href="/contact">Contact Us</a>
+                  <li className="nav-item">
+                    <a className="nav-link" style={{
+                      color: 'rgba(255, 255, 255, 0.85)',
+                      fontWeight: 500,
+                      padding: '0.5rem 1.2rem',
+                      borderRadius: '8px',
+                      transition: 'all 0.3s ease'
+                    }} href="/contact">Contact Us</a>
                   </li>
                 </ul>
-                <span class="navbar-text">
-                  <div class="loginlink" id="loginlogout">
+                <span className="navbar-text">
+                  <div className="loginlink" id="loginlogout">
                   {home_page_items}
                   </div>
                   </span>
