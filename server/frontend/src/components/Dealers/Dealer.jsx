@@ -5,7 +5,6 @@ import "../assets/style.css";
 import positive_icon from "../assets/positive.png"
 import neutral_icon from "../assets/neutral.png"
 import negative_icon from "../assets/negative.png"
-import review_icon from "../assets/reviewbutton.png"
 import Header from '../Header/Header';
 
 const Dealer = () => {
@@ -14,7 +13,6 @@ const Dealer = () => {
   const [dealer, setDealer] = useState({});
   const [reviews, setReviews] = useState([]);
   const [unreviewed, setUnreviewed] = useState(false);
-  const [postReview, setPostReview] = useState(<></>)
 
   let curr_url = window.location.href;
   let root_url = curr_url.substring(0,curr_url.indexOf("dealer"));
@@ -60,33 +58,74 @@ const Dealer = () => {
   useEffect(() => {
     get_dealer();
     get_reviews();
-    if(sessionStorage.getItem("username")) {
-      setPostReview(<a href={post_review}><img src={review_icon} style={{width:'10%',marginLeft:'10px',marginTop:'10px'}} alt='Post Review'/></a>)
-
-      
-    }
   },[]);  
 
 
 return(
-  <div style={{margin:"20px"}}>
+  <div className="dealer_page">
       <Header/>
-      <div style={{marginTop:"10px"}}>
-      <h1 style={{color:"grey"}}>{dealer.full_name}{postReview}</h1>
-      <h4  style={{color:"grey"}}>{dealer['city']},{dealer['address']}, Zip - {dealer['zip']}, {dealer['state']} </h4>
-      </div>
-      <div class="reviews_panel">
-      {reviews.length === 0 && unreviewed === false ? (
-        <text>Loading Reviews....</text>
-      ):  unreviewed === true? <div>No reviews yet! </div> :
-      reviews.map(review => (
-        <div className='review_panel'>
-          <img src={senti_icon(review.sentiment)} className="emotion_icon" alt='Sentiment'/>
-          <div className='review'>{review.review}</div>
-          <div className="reviewer">{review.name} {review.car_make} {review.car_model} {review.car_year}</div>
+      
+      {/* Hero Section */}
+      <div className="dealer_hero">
+        <div className="dealer_hero_content">
+          <div className="dealer_badge">
+            <span className="badge_icon">🏢</span>
+            <span>Authorized Dealer</span>
+          </div>
+          <h1 className="dealer_name">{dealer.full_name}</h1>
+          <div className="dealer_location">
+            <div className="location_item">
+              <span className="location_icon">📍</span>
+              <span>{dealer.address}</span>
+            </div>
+            <div className="location_item">
+              <span className="location_icon">🏙️</span>
+              <span>{dealer.city}, {dealer.state} {dealer.zip}</span>
+            </div>
+          </div>
+          {sessionStorage.getItem("username") && (
+            <a href={post_review} className="write_review_btn">
+              <span>✍️</span> Write a Review
+            </a>
+          )}
         </div>
-      ))}
-    </div>  
+      </div>
+
+      {/* Reviews Section */}
+      <div className="reviews_section">
+        <div className="reviews_header">
+          <h2>Customer Reviews</h2>
+          <span className="reviews_count">{reviews.length} {reviews.length === 1 ? 'Review' : 'Reviews'}</span>
+        </div>
+        
+        <div className="reviews_panel">
+          {reviews.length === 0 && unreviewed === false ? (
+            <div className="loading_state">
+              <div className="loading_spinner"></div>
+              <p>Loading Reviews...</p>
+            </div>
+          ) : unreviewed === true ? (
+            <div className="empty_state">
+              <span className="empty_icon">💬</span>
+              <h3>No Reviews Yet</h3>
+              <p>Be the first to share your experience with this dealer!</p>
+            </div>
+          ) : (
+            reviews.map((review, index) => (
+              <div className='review_panel' key={index}>
+                <div className="review_header">
+                  <img src={senti_icon(review.sentiment)} className="emotion_icon" alt='Sentiment'/>
+                  <div className="reviewer_info">
+                    <span className="reviewer_name">{review.name}</span>
+                    <span className="review_car">{review.car_make} {review.car_model} • {review.car_year}</span>
+                  </div>
+                </div>
+                <div className='review_content'>{review.review}</div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
   </div>
 )
 }
