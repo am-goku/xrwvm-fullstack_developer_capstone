@@ -69,9 +69,7 @@ const PostReview = () => {
     const retobj = await res.json();
     
     if(retobj.status === 200) {
-      let dealerobjs = Array.from(retobj.dealer)
-      if(dealerobjs.length > 0)
-        setDealer(dealerobjs[0])
+      setDealer(retobj.dealer)
     }
   }
 
@@ -91,32 +89,100 @@ const PostReview = () => {
 
 
   return (
-    <div>
+    <div className="postreview_page">
       <Header/>
-      <div  style={{margin:"5%"}}>
-      <h1 style={{color:"darkblue"}}>{dealer.full_name}</h1>
-      <textarea id='review' cols='50' rows='7' onChange={(e) => setReview(e.target.value)}></textarea>
-      <div className='input_field'>
-      Purchase Date <input type="date" onChange={(e) => setDate(e.target.value)}/>
-      </div>
-      <div className='input_field'>
-      Car Make 
-      <select name="cars" id="cars" onChange={(e) => setModel(e.target.value)}>
-      <option value="" selected disabled hidden>Choose Car Make and Model</option>
-      {carmodels.map(carmodel => (
-          <option value={carmodel.CarMake+" "+carmodel.CarModel}>{carmodel.CarMake} {carmodel.CarModel}</option>
-      ))}
-      </select>        
-      </div >
-
-      <div className='input_field'>
-      Car Year <input type="int" onChange={(e) => setYear(e.target.value)} max={2023} min={2015}/>
+      
+      {/* Hero Section */}
+      <div className="postreview_hero">
+        <div className="postreview_hero_content">
+          <a href={`/dealer/${id}`} className="back_link">
+            <span>←</span> Back to Dealer
+          </a>
+          <h1 className="postreview_title">Write a Review</h1>
+          <p className="postreview_subtitle">Share your experience at <strong>{dealer.full_name}</strong></p>
+        </div>
       </div>
 
-      <div>
-      <button className='postreview' onClick={postreview}>Post Review</button>
+      {/* Form Section */}
+      <div className="postreview_form_container">
+        <div className="postreview_form">
+          
+          {/* Review Textarea */}
+          <div className="form_group">
+            <label className="form_label">
+              <span className="label_icon">💬</span>
+              Your Review
+            </label>
+            <textarea 
+              id='review' 
+              className="form_textarea"
+              placeholder="Tell us about your experience with this dealer. How was the service? Would you recommend them?"
+              rows='6' 
+              onChange={(e) => setReview(e.target.value)}
+            ></textarea>
+          </div>
+
+          {/* Car Selection Row */}
+          <div className="form_row">
+            {/* Car Model */}
+            <div className="form_group">
+              <label className="form_label">
+                <span className="label_icon">🚗</span>
+                Car Make & Model
+              </label>
+              <select 
+                name="cars" 
+                id="cars" 
+                className="form_select"
+                onChange={(e) => setModel(e.target.value)}
+              >
+                <option value="" selected disabled hidden>Select your car</option>
+                {carmodels.map((carmodel, index) => (
+                  <option key={index} value={carmodel.CarMake+" "+carmodel.CarModel}>
+                    {carmodel.CarMake} {carmodel.CarModel}
+                  </option>
+                ))}
+              </select>        
+            </div>
+
+            {/* Car Year */}
+            <div className="form_group">
+              <label className="form_label">
+                <span className="label_icon">📅</span>
+                Car Year
+              </label>
+              <input 
+                type="number" 
+                className="form_input"
+                placeholder="e.g., 2023"
+                onChange={(e) => setYear(e.target.value)} 
+                max={2024} 
+                min={2015}
+              />
+            </div>
+          </div>
+
+          {/* Purchase Date */}
+          <div className="form_group">
+            <label className="form_label">
+              <span className="label_icon">🛒</span>
+              Purchase Date
+            </label>
+            <input 
+              type="date" 
+              className="form_input"
+              onChange={(e) => setDate(e.target.value)}
+            />
+          </div>
+
+          {/* Submit Button */}
+          <div className="form_actions">
+            <button className='submit_review_btn' onClick={postreview}>
+              <span>✨</span> Submit Review
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   )
 }

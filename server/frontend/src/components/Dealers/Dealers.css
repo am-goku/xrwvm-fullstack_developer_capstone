@@ -485,3 +485,222 @@ select option {
     gap: 15px;
   }
 }
+
+/* ======================== */
+/* Post Review Page Styles  */
+/* ======================== */
+
+.postreview_page {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+/* Hero Section */
+.postreview_hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding: 50px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.postreview_hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.postreview_hero_content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.back_link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.back_link:hover {
+  color: white;
+}
+
+.postreview_title {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.postreview_subtitle {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.postreview_subtitle strong {
+  color: #c4b5fd;
+}
+
+/* Form Container */
+.postreview_form_container {
+  max-width: 800px;
+  margin: -30px auto 40px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.postreview_form {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Form Groups */
+.form_group {
+  margin-bottom: 24px;
+}
+
+.form_label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.label_icon {
+  font-size: 1.1rem;
+}
+
+.form_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Form Inputs */
+.form_input,
+.form_select,
+.form_textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  background: #fafafa;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.form_input:focus,
+.form_select:focus,
+.form_textarea:focus {
+  outline: none;
+  border-color: #7c3aed;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+}
+
+.form_input::placeholder,
+.form_textarea::placeholder {
+  color: #aaa;
+}
+
+.form_textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.form_select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.form_select option {
+  padding: 10px;
+}
+
+/* Form Actions */
+.form_actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.submit_review_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 40px;
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+  font-family: 'Inter', sans-serif;
+}
+
+.submit_review_btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
+}
+
+.submit_review_btn:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive Post Review */
+@media (max-width: 768px) {
+  .postreview_hero {
+    padding: 30px 20px;
+  }
+
+  .postreview_title {
+    font-size: 1.6rem;
+  }
+
+  .postreview_form_container {
+    margin-top: -20px;
+  }
+
+  .postreview_form {
+    padding: 25px;
+    border-radius: 16px;
+  }
+
+  .form_row {
+    grid-template-columns: 1fr;
+  }
+
+  .submit_review_btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
