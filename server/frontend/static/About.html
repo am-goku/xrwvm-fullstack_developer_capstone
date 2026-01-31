@@ -47,74 +47,80 @@
       background: rgba(0, 212, 255, 0.1);
     }
 
-    .hero-section {
-      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-      padding: 80px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    .reviews-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 60px 20px;
     }
 
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>');
-      background-size: 50px 50px;
-    }
-
-    .hero-section h1 {
-      color: white;
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      position: relative;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .hero-section h1 span {
-      background: linear-gradient(90deg, #00d4ff, #7c3aed);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-section p {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 1.25rem;
-      max-width: 700px;
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
       margin: 0 auto;
-      line-height: 1.8;
-      position: relative;
+      padding: 0 20px;
     }
 
-    .stats-section {
+    .review-card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border: none !important;
+      margin: 0 !important;
+      transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .review-header {
       display: flex;
-      justify-content: center;
-      gap: 60px;
-      margin-top: 50px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
     }
 
-    .stat-item {
-      text-align: center;
+    .review-header img {
+      width: 55px !important;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #00d4ff;
-      display: block;
+    .reviewer-info h4 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a1a2e;
     }
 
-    .stat-label {
-      color: rgba(255, 255, 255, 0.7);
+    .reviewer-info .location {
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .stars {
+      color: #ffc107;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      color: #555;
       font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      line-height: 1.7;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .review-date {
+      font-size: 0.8rem;
+      color: #7c3aed;
+      font-weight: 600;
     }
 
     .team-section {
@@ -336,36 +342,10 @@
     </div>
   </nav>
 
-  <section class="hero-section">
-    <h1>Welcome to <span>Best Cars</span></h1>
-    <p>Your trusted destination for premium domestic and imported vehicles in North America.
-      With over 25 years of excellence, we've helped thousands of families find their perfect ride.</p>
-
-    <div class="stats-section">
-      <div class="stat-item">
-        <span class="stat-number">25+</span>
-        <span class="stat-label">Years Experience</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">15K+</span>
-        <span class="stat-label">Happy Customers</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">50+</span>
-        <span class="stat-label">Dealerships</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">200+</span>
-        <span class="stat-label">Car Models</span>
-      </div>
-    </div>
-  </section>
-
   <section class="team-section">
     <div class="section-title">
-      <h2>Meet Our Leadership</h2>
-      <p>Our experienced team is dedicated to providing you with exceptional service and the best deals on your dream
-        car.</p>
+      <h2>About Us</h2>
+      <p>Our experienced team is dedicated to providing you with exceptional service and the best deals on your dream car.</p>
     </div>
 
     <div class="team-grid">
@@ -428,6 +408,67 @@
             david.rodriguez@bestcars.com
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews-section">
+    <div class="section-title">
+      <h2>What Our Customers Say</h2>
+      <p>Real experiences from our valued customers</p>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="James Miller">
+          <div class="reviewer-info">
+            <h4>James Miller</h4>
+            <span class="location">Los Angeles, CA</span>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Absolutely fantastic experience! The team helped me find my dream car at an unbeatable price. Professional, friendly, and no hidden fees. Highly recommend!"</p>
+        <span class="review-date">Purchased: Toyota Camry 2024</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Emily Chen">
+          <div class="reviewer-info">
+            <h4>Emily Chen</h4>
+            <span class="location">San Francisco, CA</span>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Best car buying experience I've ever had. Sarah from sales was incredibly helpful and patient. Got exactly what I wanted within my budget!"</p>
+        <span class="review-date">Purchased: Honda CR-V 2024</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face" alt="Robert Johnson">
+          <div class="reviewer-info">
+            <h4>Robert Johnson</h4>
+            <span class="location">Seattle, WA</span>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Their service department is top-notch. Quick, efficient, and affordable. They've been maintaining my car for 3 years now. Wouldn't go anywhere else!"</p>
+        <span class="review-date">Loyal Customer since 2021</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Lisa Thompson">
+          <div class="reviewer-info">
+            <h4>Lisa Thompson</h4>
+            <span class="location">Portland, OR</span>
+          </div>
+        </div>
+        <div class="stars">★★★★☆</div>
+        <p class="review-text">"Great selection of vehicles and transparent pricing. The financing options were flexible and made the whole process stress-free. Thank you, Best Cars!"</p>
+        <span class="review-date">Purchased: Ford Mustang 2023</span>
       </div>
     </div>
   </section>

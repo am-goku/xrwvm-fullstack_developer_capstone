@@ -1,9 +1,60 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Cars Dealership - Home</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="static/style.css">
   <link rel="stylesheet" href="static/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+      min-height: 100vh;
+    }
+    .home-navbar {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+    .home-navbar h2 {
+      color: #00d4ff;
+      font-weight: 700;
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+    }
+    .home-navbar .nav-link {
+      color: rgba(255, 255, 255, 0.85) !important;
+      font-weight: 500;
+      padding: 0.5rem 1.2rem !important;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .home-navbar .nav-link:hover,
+    .home-navbar .nav-link.active {
+      color: #00d4ff !important;
+      background: rgba(0, 212, 255, 0.1);
+    }
+    .home-navbar .navbar-text {
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .home-navbar .homepage_links {
+      color: rgba(255, 255, 255, 0.85);
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .home-navbar .homepage_links:hover {
+      color: #00d4ff;
+    }
+  </style>
 <script>
 
 const logout = async (e) => {
@@ -26,22 +77,22 @@ let checkSession = ()=>{
 </script>
 </head>
 <body onload="checkSession()">
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+<nav class="navbar navbar-expand-lg home-navbar">
   <div class="container-fluid">
-    <h2 style="padding-right: 5%;">Dealerships</h2>
+    <h2>Best Cars</h2>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" style="font-size: larger;" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+          <a class="nav-link" href="/about">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
+          <a class="nav-link" href="/contact">Contact Us</a>
         </li>
       </ul>
       <span class="navbar-text">
