@@ -1,68 +1,467 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <!-- Link the style sheet here -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Best Cars Dealership</title>
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+      min-height: 100vh;
+    }
+
+    .about-navbar {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-navbar h2 {
+      color: #00d4ff;
+      font-weight: 700;
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+    }
+
+    .about-navbar .nav-link {
+      color: rgba(255, 255, 255, 0.85) !important;
+      font-weight: 500;
+      padding: 0.5rem 1.2rem !important;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .about-navbar .nav-link:hover,
+    .about-navbar .nav-link.active {
+      color: #00d4ff !important;
+      background: rgba(0, 212, 255, 0.1);
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>');
+      background-size: 50px 50px;
+    }
+
+    .hero-section h1 {
+      color: white;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-section h1 span {
+      background: linear-gradient(90deg, #00d4ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-section p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .stats-section {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 50px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #00d4ff;
+      display: block;
+    }
+
+    .stat-label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .team-section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: #666;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    .team-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: none !important;
+      margin: 0 !important;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .team-card-image {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .team-card-image img {
+      width: 100% !important;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .team-card:hover .team-card-image img {
+      transform: scale(1.1);
+    }
+
+    .team-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    }
+
+    .team-card-body {
+      padding: 25px 30px;
+      text-align: center;
+    }
+
+    .team-card-body h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 5px;
+    }
+
+    .team-card-body .role {
+      color: #7c3aed;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .team-card-body p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .team-card-body .email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #1a1a2e;
+      font-size: 0.9rem;
+      padding: 10px 20px;
+      background: #f5f7fa;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .team-card-body .email:hover {
+      background: #7c3aed;
+      color: white;
+    }
+
+    .values-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 80px 20px;
+    }
+
+    .values-section .section-title h2 {
+      color: white;
+    }
+
+    .values-section .section-title p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .value-item {
+      text-align: center;
+      padding: 40px 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .value-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .value-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #00d4ff, #7c3aed);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem;
+    }
+
+    .value-item h4 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .value-item p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 2.5rem;
+      }
+
+      .stats-section {
+        gap: 30px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+
+<body>
+  <nav class="navbar navbar-expand-lg about-navbar">
     <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <h2>Best Cars</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
+            <a class="nav-link active" href="/about">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
+            <a class="nav-link" href="/contact">Contact Us</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
+
+  <section class="hero-section">
+    <h1>Welcome to <span>Best Cars</span></h1>
+    <p>Your trusted destination for premium domestic and imported vehicles in North America.
+      With over 25 years of excellence, we've helped thousands of families find their perfect ride.</p>
+
+    <div class="stats-section">
+      <div class="stat-item">
+        <span class="stat-number">25+</span>
+        <span class="stat-label">Years Experience</span>
       </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
+      <div class="stat-item">
+        <span class="stat-number">15K+</span>
+        <span class="stat-label">Happy Customers</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">50+</span>
+        <span class="stat-label">Dealerships</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">200+</span>
+        <span class="stat-label">Car Models</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="section-title">
+      <h2>Meet Our Leadership</h2>
+      <p>Our experienced team is dedicated to providing you with exceptional service and the best deals on your dream
+        car.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-card-image">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face"
+            alt="Michael Chen">
+          <div class="team-card-overlay"></div>
+        </div>
+        <div class="team-card-body">
+          <h3>Michael Chen</h3>
+          <span class="role">Chief Executive Officer</span>
+          <p>With 20+ years in the automotive industry, Michael leads our vision for customer-first service and
+            innovation.</p>
+          <a href="mailto:michael.chen@bestcars.com" class="email">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+            </svg>
+            michael.chen@bestcars.com
+          </a>
         </div>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
+      <div class="team-card">
+        <div class="team-card-image">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face"
+            alt="Sarah Williams">
+          <div class="team-card-overlay"></div>
+        </div>
+        <div class="team-card-body">
+          <h3>Sarah Williams</h3>
+          <span class="role">Head of Sales</span>
+          <p>Sarah brings 15 years of automotive sales expertise, ensuring every customer finds their perfect match.</p>
+          <a href="mailto:sarah.williams@bestcars.com" class="email">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+            </svg>
+            sarah.williams@bestcars.com
+          </a>
         </div>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
+      <div class="team-card">
+        <div class="team-card-image">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
+            alt="David Rodriguez">
+          <div class="team-card-overlay"></div>
+        </div>
+        <div class="team-card-body">
+          <h3>David Rodriguez</h3>
+          <span class="role">Service Director</span>
+          <p>David leads our service department with a passion for quality and customer satisfaction excellence.</p>
+          <a href="mailto:david.rodriguez@bestcars.com" class="email">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+            </svg>
+            david.rodriguez@bestcars.com
+          </a>
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="values-section">
+    <div class="section-title">
+      <h2>Our Core Values</h2>
+      <p>The principles that drive everything we do</p>
     </div>
+
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-icon">🤝</div>
+        <h4>Trust & Integrity</h4>
+        <p>Honest dealings and transparent pricing on every vehicle.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">⭐</div>
+        <h4>Quality First</h4>
+        <p>Every car is thoroughly inspected and certified before sale.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">💰</div>
+        <h4>Best Value</h4>
+        <p>Competitive pricing with flexible financing options for all.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">❤️</div>
+        <h4>Customer Care</h4>
+        <p>Your satisfaction is our top priority, before and after sale.</p>
+      </div>
     </div>
-    
-</div>
+  </section>
+
+</body>
 
 </html>
