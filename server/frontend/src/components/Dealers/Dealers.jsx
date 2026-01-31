@@ -51,8 +51,13 @@ let isLoggedIn = sessionStorage.getItem("username") != null ? true : false;
 return(
   <div>
       <Header/>
-
+      <div className="dealers_page">
+        <div className="dealers_heading">
+          <h1>Our Dealerships</h1>
+          <p>Find a dealership near you</p>
+        </div>
      <table className='table'>
+      <thead>
       <tr>
       <th>ID</th>
       <th>Dealer Name</th>
@@ -70,10 +75,12 @@ return(
 
       </th>
       {isLoggedIn ? (
-          <th>Review Dealer</th>
+          <th>Review</th>
          ):<></>
       }
       </tr>
+      </thead>
+      <tbody>
      {dealersList.map(dealer => (
         <tr>
           <td>{dealer['id']}</td>
@@ -88,7 +95,9 @@ return(
           }
         </tr>
       ))}
-     </table>;
+      </tbody>
+     </table>
+     </div>
   </div>
 )
 }
