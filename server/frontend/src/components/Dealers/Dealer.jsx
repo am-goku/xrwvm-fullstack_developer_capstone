@@ -30,6 +30,7 @@ const Dealer = () => {
     });
     const retobj = await res.json();
 
+    console.log("get_dealer_objects: ", retobj)
     
     if(retobj.status === 200) {
       let dealerobjs = Array.from(retobj.dealer)
